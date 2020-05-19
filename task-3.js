@@ -20,57 +20,48 @@
 
 console.log('Задача № 3');
 
+const moduleString = (function () {
+  let str;
 
-const calkAll = (function () {
-  let number;
+  function setString(string) {
+    if (string === undefined) {
+      str = "";
+    } else if (typeof string === "number") {
+      str = toString(string);
+    } else {
+      str = string;
+    }
 
-  function setNumber(num) {
-    return (number = num);
+    return str;
   }
 
-  function addNumber(num) {
-    return (number += num);
+  function getString() {
+    return str;
   }
 
-  function multiplyNumber(num) {
-    return (number *= num);
+  function getStringLength() {
+    return str.length;
   }
 
-  function subtractNumber(num) {
-    return (number -= num);
-  }
+  function getFlipString() {
+    let flipString = "";
 
-  function divideNumber(num) {
-    return (number /= num);
-  }
+    for (let i = str.length - 1; i >= 0; i--) {
+      flipString += str[i];
+    }
 
-  function degreeNumber(num) {
-    number = Math.pow(number, num);
-
-    return number;
-  }
-
-  function getNumber() {
-    number = number.toFixed(2);
-
-    return number;
+    return flipString;
   }
 
   return {
-    setNumber,
-    addNumber,
-    multiplyNumber,
-    subtractNumber,
-    divideNumber,
-    degreeNumber,
-    getNumber,
+    setString,
+    getString,
+    getStringLength,
+    getFlipString,
   };
 })();
 
-console.log(calkAll.setNumber(10));
-console.log(calkAll.addNumber(5));
-console.log(calkAll.multiplyNumber(2));
-console.log(calkAll.subtractNumber(10));
-console.log(calkAll.divideNumber(4));
-console.log(calkAll.degreeNumber(3));
-console.log(calkAll.getNumber());
+console.log(moduleString.setString("abcd"));
+console.log(moduleString.getString());
+console.log(moduleString.getStringLength());
+console.log(moduleString.getFlipString());
